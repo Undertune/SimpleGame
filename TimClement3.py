@@ -30,7 +30,8 @@ while True:
     elif event == sg.Cancel():
         window.close()
         break
-
+    window.close()
+    break
 
 
   
