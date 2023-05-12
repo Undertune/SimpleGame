@@ -34,13 +34,6 @@ with open('recources2.csv', 'r') as file:
 soldierGeneration(3)
 
 
-""" with open('recources1.csv', 'w', newline= '') as file:
-        writer = csv.writer(file)
-        writer.writerow(["Number", "Bread", "Wheat", "Meat", "Water", "Ale"])
-        writer.writerow([1, 6, 19, 5, 20, 1])
-        writer.writerow([2,'3months', '2,5months', '1,5months', '4months', '3weeks'])
-        file.close() """
-
 pf = pd.DataFrame({
         'foodType' : ["Bread", "Wheat", "Meat", "Water", "Ale"],
         'foodAmount' : [6, 19, 5, 20, 1],
@@ -48,9 +41,9 @@ pf = pd.DataFrame({
     })
 pf.to_csv('recources1.csv', index= False, encoding='utf-8')
 
-def foodgeneration(x):   
+def foodgeneration(y):   
 
-    for i in range (0,x):
+    for i in range (0,y):
         breadAmount = random.randint(0,21)
         wheatAmount = random.randint(0,21)
         meatAmount = random.randint(0,21)
@@ -63,17 +56,13 @@ def foodgeneration(x):
         foodDuration5 = random.randint(0,11)
 
         lf = pd.read_csv('recources1.csv')
-        food = pd.DataFrame({"foodType":['Bread','Wheat','Meat','Water','Ale'],"foodAmount": [breadAmount,wheatAmount,meatAmount,waterAmount,aleAmount],"Duration": [foodDuration1,foodDuration2,foodDuration3,foodDuration4,foodDuration5]})
+        food = pd.DataFrame({"foodType":['Bread','Wheat','Meat','Water','Ale'],"foodAmount": [breadAmount,wheatAmount,meatAmount,waterAmount,aleAmount],
+                             "Duration": [foodDuration1,foodDuration2,foodDuration3,foodDuration4,foodDuration5]})
         kf = pd.concat([lf, food], ignore_index=True)
         kf.to_csv('recources1.csv', index= False, encoding='utf-8')
 
 
 foodgeneration(3)
-"""  df = pd.DataFrame(foodstats)
-    
-    df.to_csv("c:/Users/tim.clement/Desktop/TimClement4/recources1.csv", index=False)
- """
-""" foodgeneration() """
 
 
 soldierGeneration(4)
