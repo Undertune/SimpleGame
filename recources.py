@@ -1,5 +1,4 @@
 import pandas as pd 
-import numpy as np 
 import csv 
 from faker import Faker
 import random
@@ -25,13 +24,7 @@ def soldierGeneration(x):
         Soldier = pd.DataFrame({"Name":[fake.name()],"Attack": [attackValue],"Defence": [defenceValue],"Consumption": [consumptionValue]})
         hf = pd.concat([df, Soldier], ignore_index=True)
         hf.to_csv('recources2.csv', index= False, encoding='utf-8')
-        
-soldierGeneration(4)
-with open('recources2.csv', 'r') as file:
-  dataset = pd.read_csv('recources2.csv')
-  print(dataset)
 
-soldierGeneration(3)
 
 
 pf = pd.DataFrame({
@@ -41,9 +34,9 @@ pf = pd.DataFrame({
     })
 pf.to_csv('recources1.csv', index= False, encoding='utf-8')
 
-def foodgeneration(y):   
+def foodgeneration(x):   
 
-    for i in range (0,y):
+    for i in range (0,x):
         breadAmount = random.randint(0,21)
         wheatAmount = random.randint(0,21)
         meatAmount = random.randint(0,21)
@@ -60,12 +53,3 @@ def foodgeneration(y):
                              "Duration": [foodDuration1,foodDuration2,foodDuration3,foodDuration4,foodDuration5]})
         kf = pd.concat([lf, food], ignore_index=True)
         kf.to_csv('recources1.csv', index= False, encoding='utf-8')
-
-
-foodgeneration(3)
-
-
-soldierGeneration(4)
-
-
-

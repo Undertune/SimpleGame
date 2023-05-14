@@ -1,7 +1,8 @@
-import csv
+import pandas as pd
+import matplotlib.pyplot as plt
 
+data = {'tasks': [300, 500, 700]}
+df = pd.DataFrame(data, index=['tasks_pending', 'tasks_ongoing', 'tasks_completed'])
 
-with open("recources1.csv", 'r') as f:
-    csv_reader=csv.reader(f)
-    for line in csv_reader:
-        print(line[0],line[1])
+df.plot.pie(y='tasks', figsize=(5, 5), autopct='%1.1f%%', startangle=90)
+plt.show()
