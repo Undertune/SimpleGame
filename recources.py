@@ -1,11 +1,12 @@
+#Import av funktioner och bibliotek
 import pandas as pd 
 import csv 
 from faker import Faker
 import random
-
 fake = Faker()
 
 
+#Skapar preliminär för soldater data så programet alltid har en bas av data att hantera
 with open('recources2.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Name", "Attack", "Defence", "Consumption"])
@@ -13,9 +14,13 @@ with open('recources2.csv', 'w', newline='') as file:
         file.close()
 
 
-
+#Funktion för generation av soldat data
 def soldierGeneration(x):
 
+
+    #Här skapas dataframen för pandas från csv filen,
+    #sedan läggs den ny skapade datan av Soldier dataframen tillsammans med dataframen df från csv filen.
+    #Dessa två dataframes läggs in i en ny dataframe med hjälp av concat i dataframen hf som sedan läggs in i csv filen
     for i in range (0,x):
         attackValue = random.randint(0,21)
         defenceValue = random.randint(0,21)
@@ -27,6 +32,7 @@ def soldierGeneration(x):
 
 
 
+#Skapar preliminär för mat data så programet alltid har en bas av data att hantera
 pf = pd.DataFrame({
         'foodType' : ["Bread", "Wheat", "Meat", "Water", "Ale"],
         'foodAmount' : [6, 19, 5, 20, 1],
@@ -34,6 +40,10 @@ pf = pd.DataFrame({
     })
 pf.to_csv('recources1.csv', index= False, encoding='utf-8')
 
+
+
+
+#En funktion för generationen av mat data
 def foodgeneration(x):   
 
     for i in range (0,x):
@@ -48,6 +58,10 @@ def foodgeneration(x):
         foodDuration4 = random.randint(0,11)
         foodDuration5 = random.randint(0,11)
 
+
+        #Här skapas dataframen df för pandas från csv filen,
+        #sedan läggs den ny skapade datan av food dataframen tillsammans med dataframen lf från csv filen.
+        #Dessa två dataframes läggs in i en ny dataframe med hjälp av concat i dataframe kf som sedan läggs in i csv filen
         lf = pd.read_csv('recources1.csv')
         food = pd.DataFrame({"foodType":['Bread','Wheat','Meat','Water','Ale'],"foodAmount": [breadAmount,wheatAmount,meatAmount,waterAmount,aleAmount],
                              "Duration": [foodDuration1,foodDuration2,foodDuration3,foodDuration4,foodDuration5]})
