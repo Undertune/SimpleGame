@@ -44,7 +44,7 @@ def mainWindow():
         
         elif event == 'Ok':
             window.close()
-            sg.popup('You entered', text_input, font=('Times new roman', 16))
+            sg.popup('Du skrev in', text_input, font=('Times new roman', 16))
             soldierGeneration(int(text_input)*4)
             foodgeneration(int(text_input))
             pass
@@ -140,7 +140,7 @@ def graphFood():
                   [sg.Combo(['Stapel Diagram','Graf','cirkelDiagram'], key='Diagram')],
                   [sg.Button('Fortsätt')],
                   [sg.Button('Tillbaka')],
-                  [sg.Button('Help')]]
+                  [sg.Button('Hjälp')]]
         
 
         #Det är här fönstret skapas och även designerar vart variabler ska få sina värden och en som får ett värde designerat.
@@ -158,7 +158,7 @@ def graphFood():
             foodWindow()
             break
 
-        elif event == 'Help': 
+        elif event == 'Hjälp': 
             window.close()
             sg.popup('Om talet för åren var för stort och datan är väldigt ihop tryck använd förstorings glaset i fönstret för att zooma in',
                     font=('Times new roman', 16))
@@ -238,7 +238,7 @@ def foodWindow():
 
 
             #Fönstrets layout med två knappar och en table.
-            layout = [[sg.Button('Back')],
+            layout = [[sg.Button('Tillbaka')],
                       [sg.Button('Visualisera')],
                       [sg.Table(values = values, headings = headings,
                         auto_size_columns=False,
@@ -252,7 +252,7 @@ def foodWindow():
 
 
             #En if sekvens som kollar vilken knapp man trycker på.
-            if event == 'Back':
+            if event == 'Tillbaka':
                 window.close()
                 mainWindow()
                 break
